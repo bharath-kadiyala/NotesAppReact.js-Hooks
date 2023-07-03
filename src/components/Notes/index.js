@@ -4,7 +4,7 @@ import NoteItem from '../NoteItem'
 
 import {
   BgCon,
-  Form,
+  NoteCon,
   Title,
   TextCon,
   TitleInput,
@@ -22,19 +22,6 @@ const Notes = () => {
   const [textInput, setText] = useState('')
   const [notesList, setNewNote] = useState([])
 
-  const noResultFound = () => (
-    <NoResultCon>
-      <Image
-        src="https://assets.ccbp.in/frontend/hooks/empty-notes-img.png"
-        alt="notes empty"
-      />
-      <NoResultTitle>No Notes Yet</NoResultTitle>
-      <NoResultSubTitle>Notes you add will appear here</NoResultSubTitle>
-    </NoResultCon>
-  )
-
-  let finalResult = noResultFound()
-
   const onAddTitle = event => {
     setTitle(event.target.value)
   }
@@ -50,44 +37,55 @@ const Notes = () => {
       titleInput,
       textInput,
     }
+
+    setNewNote(prevNotesList => [...prevNotesList, newNotes])
     setTitle('')
     setText('')
-    setNewNote(prevNotesList => [...prevNotesList, newNotes])
-    console.log(notesList)
   }
+
+  console.log(notesList)
+
+  const noResultFound = () => (
+    <NoResultCon>
+      <Image
+        src="https://assets.ccbp.in/frontend/hooks/empty-notes-img.png"
+        alt="notes empty"
+      />
+      <NoResultTitle>No Notes Yet</NoResultTitle>
+      <NoResultSubTitle>Notes you add will appear here</NoResultSubTitle>
+    </NoResultCon>
+  )
 
   const sendNotesData = () => (
     <UnOrderListCon>
       {notesList.map(eachNote => (
-        <NoteItem NotesDetails={eachNote} key={eachNote.id} />
+        <NoteItem notesDetails={eachNote} key={eachNote.id} />
       ))}
     </UnOrderListCon>
   )
 
-  if (notesList.length !== 0) {
-    finalResult = sendNotesData()
-  }
-
   return (
     <BgCon>
-      <Form onSubmit={onAddNewNotes}>
+      <NoteCon>
         <Title>Notes</Title>
-        <TextCon>
+        <TextCon onSubmit={onAddNewNotes}>
           <TitleInput
+            type="text"
             placeholder="Title"
             value={titleInput}
             onChange={onAddTitle}
           />
           <TextArea
-            placeholder="Take a Note"
+            type="text"
+            placeholder="Take a Note..."
             rows="6"
             value={textInput}
             onChange={onAddTakeNote}
           />
           <AddButton>Add</AddButton>
         </TextCon>
-      </Form>
-      {finalResult}
+        {notesList.length === 0 ? noResultFound() : sendNotesData()}
+      </NoteCon>
     </BgCon>
   )
 }
