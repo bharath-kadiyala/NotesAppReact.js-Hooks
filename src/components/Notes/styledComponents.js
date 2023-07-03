@@ -8,15 +8,22 @@ export const BgCon = styled.div`
   //   min-height: 100vh;
 `
 
-export const Form = styled.div`
+export const NoteCon = styled.div`
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   width: 80%;
+  //   max-width: 800px;
+  //   //   border : 1px solid red
+  //   margin-top: 35px;
+  //   margin-bottom: 35px;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 80%;
-  max-width: 800px;
-  //   border : 1px solid red
-  margin-top: 35px;
-  margin-bottom: 35px;
+  width: 80vw;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
 `
 export const Title = styled.h1`
   font-family: 'Bree Serif';
@@ -24,14 +31,15 @@ export const Title = styled.h1`
   color: #4c63b6;
   margin-bottom: 40px;
 `
-export const TextCon = styled.div`
+export const TextCon = styled.form`
   display: flex;
   flex-direction: column;
   padding: 15px;
   background-color: #ffffff;
-  box-shadow: 2px 2px 6px #334155;
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
   min-width: 550px;
   min-height: 200px;
+  margin-bottom: 30px;
 `
 export const TitleInput = styled.input`
   font-family: 'Roboto';
@@ -66,6 +74,9 @@ export const AddButton = styled.button`
 export const UnOrderListCon = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
+  //   margin-top: 32px;
+  //   padding-left: 0;
   list-style-type: none;
 `
 
@@ -75,6 +86,7 @@ export const NoResultCon = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+  margin-bottom: 40px;
 `
 export const Image = styled.img`
   height: 100px;
