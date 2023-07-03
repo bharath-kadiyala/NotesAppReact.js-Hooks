@@ -13,3 +13,4 @@ const NoteItem = props => {
 }
 
 export default NoteItem
+
